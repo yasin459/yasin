@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./components/header/header";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "./theme";
+import { PictureComp } from "./components/body/pictureComp";
+import { Box, Grid, List, ListItem } from "@mui/material";
+import collorBg from "./assets/images/collor_bg.jpg";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.92), rgba(255, 250, 240, 0.63)),url("${collorBg}")`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
+        <Header />
+        <List
+          sx={{
+            p: 0,
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <ListItem disablePadding>
+            <PictureComp />
+          </ListItem>
+        </List>
+      </Box>
+    </ThemeProvider>
   );
 }
 
